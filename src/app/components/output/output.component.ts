@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+//Servicio para compartir datos con otros componentes
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class OutputComponent implements OnInit {
   public posicionJugador:Array<number>;
 
   constructor(public datosOutput: DataService) { 
-    
+  
+  //Este componente pintará el resultado de lo que pasa en la partida
+  //a traves de los datos que otros le envian
    this.numFlechas=this.datosOutput.estadoTablero[2];
    this.oro = this.datosOutput.oro;
    this.percepciones=datosOutput.percepciones;
@@ -25,10 +28,7 @@ export class OutputComponent implements OnInit {
 
 
   ngOnInit(){
-
-    console.log(this.datosOutput.estadoTablero[2]);
-    console.log("oro en output = " + this.datosOutput.oro);
-    
+   
 
   }
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+//Servicio para compartir datos con otros componentes
 import { DataService } from 'src/app/services/data.service';
+
+//iconos de FontAwesome
 import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { faArrowAltCircleUp } from '@fortawesome/free-solid-svg-icons';
@@ -30,10 +33,9 @@ export class TecladoComponent implements OnInit {
   
 
 
-
+//A este metodo le pasamos un movimiento y lo envia a los demás componentes
   movimiento(direccion:string){
 
-    console.log("direccion= " + this.datosTeclado.teclado);
     this.datosTeclado.teclado = direccion;
 
     
