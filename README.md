@@ -1,8 +1,17 @@
 # Juego
+Creado por Moisés Acedo
+Es importante atender a la versión de Angular utilizada, ya que algunos componentes podrían no funcionar
+correctamente.
 
+Esta es la información sobre el proyecto, generada automaticamente con comentarios ES--:
+
+
+ES--Versión de Angular-cli Importante!!
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
 
 ## Development server
+
+ES--Tras installar las dependencias con npm install corremos el servicio con ng serve
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -16,6 +25,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
+ES--usando ng test podemos comprobar los test unitarios, creados ya para los movimientos del jugador
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
