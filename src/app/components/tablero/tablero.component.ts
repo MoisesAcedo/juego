@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+//Servicio para pasar datos entre componentes
 import { DataService } from 'src/app/services/data.service';
+//modelo de datos de tablero
 import { Tablero } from '../../models/tablero';
+//Iconos de Fontawesome
 import { faWind } from '@fortawesome/free-solid-svg-icons';
 import { faHeadSideMask } from '@fortawesome/free-solid-svg-icons';
 import { faPastafarianism } from '@fortawesome/free-solid-svg-icons';
@@ -55,56 +58,34 @@ export class TableroComponent implements OnInit {
 
   }
 
-
+//cuando inicie la aplicacion creará el tablero con wumpus, pozos, jugador, etc.
+//cuando esté creado el tablero se creará los elementos como brisa, hedor, ...
   ngOnInit() {
-
-    console.log("ejecutando oninit");
 
     this.crearTablero();
     this.crearElementos();
 
-
   }
-
+  //cuando se produzca un cambio por movimiento del jugador
+  //se volverán a crear los elementos (hacer desaparecer hedor)
+  //comprobará si hemos perdido o ganado
   ngDoCheck() {
-
-    console.log("ejecutando docheck" + this.movimientoJugador);
-
     this.accionJugador(this.datosTablero.teclado, this.posicionJugador, this.celdas);
     this.perderGanar();
     this.crearElementos();
-
-
-
-
-
-
-
-
   }
-
-
-
+//metodo para las acciones del jugador
   accionJugador(tec: string, posicionJugador: Array<number>, celdas: number): Array<number> {
-
-    console.log("datosTablero = " + this.datosTablero.teclado);
-
-
-
-    console.log("posicionJugador = " + this.posicionJugador);
-
+ 
     if (tec == "derecha") {
       if (posicionJugador[2] == 3) {
 
         if (posicionJugador[1] < celdas - 1) {
 
-
-
           posicionJugador[1]++;
           this.datosTablero.percepciones = "derecha";
         } else {
           this.choque = true;
-          console.log("choque" + this.choque);
           this.datosTablero.percepciones = "choque";
         }
 
@@ -115,23 +96,16 @@ export class TableroComponent implements OnInit {
       }
     }
 
-
     if (tec == "izquierda") {
       if (posicionJugador[2] == 9) {
 
-
         if (posicionJugador[1] > 0) {
-
 
           this.datosTablero.percepciones = "izquierda";
           this.posicionJugador[1]--;
         } else {
           this.datosTablero.percepciones = "choque";
-          console.log("choque" + this.choque);
         }
-
-
-
 
       }
       else {
@@ -143,24 +117,14 @@ export class TableroComponent implements OnInit {
     if (tec == "arriba") {
       if (posicionJugador[2] == 12) {
 
-
-
         if (posicionJugador[0] > 0) {
-
-
 
           posicionJugador[0]--;
           this.datosTablero.percepciones = "arriba";
         } else {
           this.choque = true;
-          console.log("choque" + this.choque);
           this.datosTablero.percepciones = "choque";
         }
-
-
-
-
-
 
       }
       else {
@@ -172,25 +136,14 @@ export class TableroComponent implements OnInit {
     if (tec == "abajo") {
       if (posicionJugador[2] == 6) {
 
-
-
-
         if (posicionJugador[0] < this.celdas - 1) {
-
-
 
           posicionJugador[0]++;
           this.datosTablero.percepciones = "abajo";
         } else {
           this.choque = true;
-          console.log("choque" + this.choque);
           this.datosTablero.percepciones = "choque";
         }
-
-
-
-
-
 
       }
       else {
@@ -223,7 +176,6 @@ export class TableroComponent implements OnInit {
     if (tec == "disparo" && this.datosTablero.estadoTablero[2] > 0) {
 
       this.datosTablero.estadoTablero[2]--;
-      console.log("flech" + this.datosTablero.estadoTablero[2]);
 
       if (this.arrayTablero[posicionJugador[0]][posicionJugador[1]] == 'hedor'
         || this.arrayTablero[posicionJugador[0]][posicionJugador[1]] == 'hedor, brisa'
@@ -246,48 +198,27 @@ export class TableroComponent implements OnInit {
 
           this.arrayTablero[posicionJugador[0] - 1 > 0 ? posicionJugador[1] - 1 : 0][posicionJugador[1]] = "vacio";
 
-
-
-
         }
 
         this.datosTablero.percepciones = "wumpus muerto por flecha Gritooooooo";
-        console.log("ha vaciarrrrrrrrr")
-        console.log(this.arrayTablero);
-
-
 
       } else {
         this.datosTablero.percepciones = "flecha perdida";
 
       }
 
-
     }
-
-
-
-
-
-
-    console.log("pos jug datostablero" + this.datosTablero.posicionJugador);
-    console.log("posjug " + posicionJugador);
-
-
-
     return posicionJugador;
-
-
   }
 
-
+//metodo para comprobar si gana o pierde
   perderGanar() {
 
     if (this.arrayTablero[this.posicionJugador[0]][this.posicionJugador[1]] == 'salida' && this.datosTablero.oro == true) {
 
       this.datosTablero.percepciones = "has ganado";
       this.datosTablero.estadoPantallas = Array(true, false, false, false);
-      alert("has ganado");
+      alert("Has ganado");
 
     }
 
@@ -297,7 +228,7 @@ export class TableroComponent implements OnInit {
 
       this.datosTablero.estadoPantallas = Array(true, false, false, false);
       this.datosTablero.percepciones = "has perdido";
-      alert("has perdido");
+      alert("Has perdido");
 
 
     }
@@ -306,20 +237,15 @@ export class TableroComponent implements OnInit {
 
       this.datosTablero.estadoPantallas = Array(true, false, false, false);
 
-      alert("has perdido");
+      alert("Has perdido");
 
     }
 
   }
 
-
-
-
-
-
+//metodo para crear tablero
   crearTablero() {
 
-    console.log("creando tablero");
     let numPozos = this.pozos;
     let wumpus = 1;
     let oro = 1;
@@ -353,17 +279,11 @@ export class TableroComponent implements OnInit {
 
       }
 
-
-      //this.arrayTablero[i] = "pozo";
-      console.log(Math.floor(Math.random() * 2));
-
-
     }
 
   }
 
   crearElementos() {
-    console.log("creando elementos");
     for (let i = 0; i < this.celdas; i++) {
 
 
@@ -542,12 +462,5 @@ export class TableroComponent implements OnInit {
       }
     }
   }
-
-
-
-
-
-
-
 
 }
