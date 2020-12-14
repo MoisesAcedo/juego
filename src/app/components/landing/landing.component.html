@@ -1,0 +1,106 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-1">
+
+    </div>
+    <div class="col-10">
+
+      <h6>Instrucciones del juego</h6>
+      
+      <p>El objetivo del juego es conseguir coger el oro y volver a la casilla de salida<fa-icon [icon]="faSalida">
+        </fa-icon>.
+        Hay que tener cuidado con 2 peligros importantes: los pozos <fa-icon [icon]="faPozo"></fa-icon> y el Wumpus
+        <fa-icon [icon]="faWumpus"></fa-icon>.
+        En caso de caer en una de estas casillas habrás perdido. Cuentas con una excelente información en las casillas
+        aledañas:
+        Casillas aledañas a el/los pozos <fa-icon [icon]="faPozo"></fa-icon>: Percibirás la brisa <fa-icon
+          [icon]="faWind"></fa-icon>,
+        Casillas aledañas al Wumpus <fa-icon [icon]="faWumpus"></fa-icon>: Percibirás el hedor <fa-icon [icon]="faMask">
+        </fa-icon>
+
+      </p>
+
+
+      <p>Podrás moverte por el tablero con las flechas de dirección, cuando te encuentres en una casilla aledaña al
+        Wumpus podrás dispararle con el
+        botón <fa-icon [icon]="faDisparo"></fa-icon> una flecha que le matará si le apuntas a él, con el botón 
+        <fa-icon [icon]="faMano"></fa-icon> podrás recoger el oro cuando te encuentres en la casilla que marca el icono 
+        <fa-icon [icon]="faOro"></fa-icon>.</p>
+      <p>Elige tus opciones y ¡Buena suerte! </p>
+      <hr>
+
+
+
+
+    </div>
+
+
+    <div class="col-1">
+
+
+
+
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-1"></div>
+    <div class="col-10 ">
+
+
+
+
+      <form #formConfig="ngForm" (ngSubmit)="onSubmit()">
+
+        
+
+          <div class="mb-3 ">
+            <label for="celdas" class="form-label h6 ">Número de celdas del tablero</label>
+            <select class="form-select custom-select" name="celdas" #celdas="ngModel" [(ngModel)]="config.celdas">
+              <option value="4">4 x 4</option>
+              <option value="5">5 x 5</option>
+              <option value="6">6 x 6</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="pozos" class="form-label h6">Número de pozos</label>
+            <select class="form-select custom-select" name="pozos" #pozos="ngModel" [(ngModel)]="config.pozos"
+              aria-label="Número de pozos">
+
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+
+            </select>
+          </div>
+
+        
+
+
+    <div class="mb-3">
+      <label for="flechas" class="form-label h6">Número de flechas</label>
+      <select class="form-select custom-select" name="flechas" #flechas="ngModel" [(ngModel)]="config.flechas"
+        aria-label="Número de flechas">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!formConfig.form.valid">Iniciar partida</button>
+
+  
+
+
+
+        
+
+      </form>
+
+    </div>
+    <div class="col-1"></div>
+
+  </div>
+</div>

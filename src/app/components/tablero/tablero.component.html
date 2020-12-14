@@ -1,0 +1,97 @@
+<div container>
+    <div class="row">
+
+        <div class="col-12 text-center ">
+
+            <table class="table-dark table-bordered text-dark mx-auto">
+                <tbody>
+
+                    <tr *ngFor="let l of arrayTablero; index as i">
+
+                        <!--<td *ngFor="let x of l"><img srcset="{{x}}"></td>
+                        
+                            [ngStyle]="{'background-image': 'url(' + value ? image : otherImage + ')'}"
+                        -->
+                        <td *ngFor="let x of l; index as j">
+
+                           
+
+                            <div class="imagenes-celda" *ngIf="posicionJugador[0]== i && posicionJugador[1]== j">
+                                <img [ngStyle]="{'transform': posicionJugador[2] == 6 ? 'rotate(50deg)' : 
+                             (posicionJugador[2] == 3 ? 'rotate(-10deg)': (posicionJugador[2] == 9 ? 'scaleX(-1)': 'rotate(-130deg) scaleY(-1)'))}"
+                                    srcset="{{imgJugador}}" />
+
+                                    
+
+
+                                <i *ngIf="x=='brisa'">
+                                    <fa-icon [icon]="faWind"></fa-icon>
+                                </i>
+
+                                <i *ngIf="x=='hedor'">
+                                    <fa-icon [icon]="faMask"></fa-icon>
+                                </i>
+
+                                <i *ngIf="x=='hedor, brisa'">
+                                    <fa-icon [icon]="faWind"></fa-icon>
+                                    <fa-icon [icon]="faMask"></fa-icon>
+
+                                </i>
+
+                                <i *ngIf="x=='wumpus'">
+                                    <fa-icon [icon]="faWumpus"></fa-icon>
+                                </i>
+                                <i *ngIf="x=='pozo'">
+                                    <fa-icon [icon]="faPozo"></fa-icon>    
+                                </i>
+
+                                <i *ngIf="x=='oro'">
+                                    <fa-icon [icon]="faOro"></fa-icon> 
+                                </i>
+
+                                <i *ngIf="x=='brisa, oro'">
+                                    <fa-icon [icon]="faOro"></fa-icon>
+                                    <fa-icon [icon]="faWind"></fa-icon>
+                                    
+                                </i>
+                                <i *ngIf="x=='hedor, oro'">
+                                    <fa-icon [icon]="faOro"></fa-icon>
+                                    <fa-icon [icon]="faMask"></fa-icon>
+                                </i>
+                                <i *ngIf="x== 'hedor, brisa, oro'">
+                                    <fa-icon [icon]="faOro"></fa-icon>
+                                    <fa-icon [icon]="faMask"></fa-icon>
+                                    <fa-icon [icon]="faWind"></fa-icon>
+                                </i>
+
+                                
+
+                            </div>
+
+                             <i *ngIf="x== 'salida'">
+                                <fa-icon [icon]="faSalida"></fa-icon>
+                                
+                            </i>
+
+
+
+
+                        </td>
+
+
+
+                    </tr>
+
+                </tbody>
+
+
+
+
+
+            </table>
+        </div>
+
+
+
+    </div>
+</div>

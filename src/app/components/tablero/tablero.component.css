@@ -1,0 +1,23 @@
+table td{
+    width: 75px!important;
+    height: 75px!important;
+    
+    
+    
+}
+
+img {
+    width: 50%;
+    display: inline;
+    
+    
+   
+}
+
+.imagenes-celda{
+    padding: 0px !important;
+    margin: 0px !important;
+    
+}
+
+

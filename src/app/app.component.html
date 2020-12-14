@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col 12">
+      <!-- As a link -->
+      <nav class="navbar navbar-light bg-light ">
+        <a class="navbar-brand mx-auto" href="#">Hunt the Wumpus | Moisés Acedo</a>
+      </nav>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12">
+      <landing *ngIf="visibilidadComponente.estadoPantallas[0]"></landing>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <tablero *ngIf="visibilidadComponente.estadoPantallas[1]"></tablero>
+    </div>
+
+    <div class="col-6">
+
+      <output *ngIf="visibilidadComponente.estadoPantallas[3]"></output>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+
+      <teclado *ngIf="visibilidadComponente.estadoPantallas[2]"></teclado>
+    </div>
+  </div>
+
+</div>
